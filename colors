@@ -4,12 +4,12 @@ RESET="${RESET:-$'\033[0m'}"
 
 LIGHT_GREEN="${LIGHT_GREEN:-$'\033[38;5;46;1m'}"
 LIGHT_BLUE="${LIGHT_BLUE:-$'\033[38;5;75;1m'}"
-RED="${RED:-$'\033[38;5;160;1m}'
+RED="${RED:-$'\033[38;5;160;1m'}"
 YELLOW="${YELLOW:-$'\033[38;5;184;1m'}"
 ORANGE="${ORANGE:-$'\033[38;5;208;1m'}"
 LIGHT_GREY="${LIGHT_GREY:-$'\033[38;5;242;1m'}"
 
 
-# Effets
+# Effects
 
 UNDERLINE=${UNDERLINE:-$'\033[4m'}"
