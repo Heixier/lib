@@ -1,0 +1,62 @@
+export USER=rsiah
+export MAIL=rsiah@student.42singapore.sg
+source /home/rsiah/custom/lib/docbook-xsl-1.79.1/.profile.incl
+export XML_CATALOG_FILES="$HOME/custom/etc/xml/catalog"
+export PKG_CONFIG_PATH="$HOME/custom/builds/nettle/lib64/pkgconfig:$HOME/custom/builds/gmp/lib/pkgconfig:$HOME/custom/builds/libtasn1/lib/pkgconfig:$HOME/custom/builds/p11-kit/lib/pkgconfig:$HOME/custom/builds/gnutls/lib/pkgconfig:$HOME/ffmpeg_build/lib/pkgconfig:$HOME/custom/builds/libass/lib/pkgconfig:$HOME/custom/builds/lame/lib/pkgconfig:$HOME/custom/builds/ogg/lib/pkgconfig:$HOME/custom/builds/vorbis/lib/pkgconfig:$HOME/custom/builds/libunwind/lib/pkgconfig"
+
+unsetopt BEEP
+export LESS="-QR"
+
+source ~/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
+
+bash ~/Core/malware/pranks/antidotes/kill_parrots.sh
+
+eval "$(dircolors ~/plugins/themes/bliss.dircolors)"
+PATH=$PATH:"/home/rsiah/.local/bin:/home/rsiah/custom/bin"
+m4="/home/rsiah/custom/bin/m4"
+
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+force_color_prompt=yes
+PROMPT='%F{105}%n%f %F{135}%~%f%F{69}>%f '
+
+alias lock="dm-tool switch-to-greeter"
+alias ls="ls --color=auto"
+alias diff="diff --color"
+alias mute="pactl set-sink-mute 0 1"
+alias unmute="pactl set-sink-mute 0 0"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cd=z
+
+alias gc="gcc -Wall -Wextra -Werror"
+alias ggc="gcc -g -Wall -Wextra -Werror"
+
+alias norm="norminette"
+alias ldb="gcc -Wall -Wextra -Werror -g -o debug"
+alias debug="lldb ./debug"
+alias crun="gcc -Wall -Wextra -Werror *.c ; ./a.out"
+alias run="./a.out"
+function vrun() {
+	out=$(valgrind --track-origins=yes --track-fds=yes --leak-check=full --show-leak-kinds=all -s ./a.out $@ 2>&1)
+ 	if printf "%s\n" "$out" | grep -E "lost|ERROR SUMMARY: [^0]|Open file|Invalid" > /dev/null; then
+		printf "\e[1;91m%s\e[0m" "$out"
+	else
+		result=$(printf "%s" "$out" | grep -vE "==|--")
+		printf "%s\e[0;92m\nNo valgrind errors found!\n\e[0m" $result
+	fi
+}
+
+alias evalsh="/home/$USER/Core/eval/general/eval.sh"
+eval "$(zoxide init zsh)"

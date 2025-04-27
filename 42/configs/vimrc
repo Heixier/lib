@@ -1,0 +1,16 @@
+set number
+set belloff=all
+set mouse=a
+set termguicolors
+filetype plugin indent on
+colorscheme catppuccin_macchiato 
+set clipboard=unnamedplus
+
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set autowrite
+set hidden
+set mouse=a

@@ -1,3 +1,4 @@
 # Library
 
-This repository is made to hold common resources used in my scripts
+Resource library to hold stuff
+
