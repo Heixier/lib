@@ -30,6 +30,9 @@ gsettings set org.gnome.desktop.background picture-options 'zoom'
 gsettings set org.gnome.desktop.background picture-uri-dark "file://$IMAGE_DEST"
 gsettings set org.gnome.desktop.background picture-uri "file://$IMAGE_DEST"
 
+# Kill any vlc instances
+killall vlc 2>/dev/null
+
 # Start animation
 $XWINWRAP -fs -fdt -ni -b -nf -un -o 1.0 -- $CVLC --no-video-title-show --drawable-xid WID --loop --no-audio "$LIVE_PATH" >/dev/null 2>&1 &
 
